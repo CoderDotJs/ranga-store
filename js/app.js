@@ -20,19 +20,21 @@ const showProducts = (products) => {
       <div class="card h-100 align-items-center py-3 shadow-lg">
       <img class="product-image card-img-top " src=${image}></img>
       
-      <div class="card-body">
-        <h3>${product.title}</h3>
+      <div class="card-body d-flex flex-column justify-content-evenly align-items-start">
+        <h1 class="fs-2">${product.title}</h1>
         <p>Category: ${product.category}</p>
         <p>Rating: ${product.rating.rate}(${product.rating.count})</p>
-        <h2>Price: $ ${product.price}</h2>
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button id="details-btn" data-bs-toggle="modal" data-bs-target="#${product.id}" class="btn btn-danger">Details</button>
+        <h1 class="fs-5">Price: $ ${product.price}</h1>
+        <div>
+        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success rounded-0">Add to cart</button>
+        <button id="details-btn" data-bs-toggle="modal" data-bs-target="#a${product.id}" class="btn btn-danger rounded-0">Details</button>
+        </div>
       </div>
       </div>
 
       <!-- Modal -->
 
-  <div class="modal fade" id="${product.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="a${product.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -40,8 +42,11 @@ const showProducts = (products) => {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+        <img class="product-image card-img-top my-3 mx-auto d-block" src=${image}></img>
           <p>${product.description}</p>
-          <p>Price: $ ${product.price}</p>
+          <p>Category: ${product.category}</p>
+          <p>Rating: ${product.rating.rate}(${product.rating.count})</p>
+          <h1 class="fs-5">Price: $ ${product.price}</h1>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -67,6 +72,8 @@ const addToCart = (id, price) => {
   updateTotal();
 };
 
+    // get input value 
+
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
@@ -74,6 +81,7 @@ const getInputValue = (id) => {
 };
 
 // main price update function
+
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
@@ -82,11 +90,13 @@ const updatePrice = (id, value) => {
 };
 
 // set innerText function
+
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = parseFloat(value).toFixed(2);
 };
 
 // update delivery charge and total Tax
+
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price").toFixed(2);
   if (priceConverted > 200) {
@@ -104,6 +114,7 @@ const updateTaxAndCharge = () => {
 };
 
 //grandTotal update function
+
 const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
@@ -111,27 +122,3 @@ const updateTotal = () => {
   document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
 updateTotal();
-
-// const showDetails = (product) =>{
-//   const modal = document.getElementById('modal-section');
-//   modal.innerHTML = `
-//   <!-- Modal -->
-//   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//     <div class="modal-dialog">
-//       <div class="modal-content">
-//         <div class="modal-header">
-//           <h5 class="modal-title" id="exampleModalLabel">${product.title}</h5>
-//           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//         </div>
-//         <div class="modal-body">
-//           <p>${product.description}</p>
-//         </div>
-//         <div class="modal-footer">
-//           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-//           <button type="button" class="btn btn-primary">Save changes</button>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-//   `
-// }
