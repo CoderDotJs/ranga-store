@@ -1,9 +1,11 @@
+  // fetching the data in a function 
 const loadProducts = () => {
   const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR0w-S4ROqiHtdqT4AQ3ySA1y8lPfqV0mboFe6I20vjfDQTciXKVmc1Ad1k`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
 };
+
 loadProducts();
 
 // show all product in UI 
@@ -61,6 +63,7 @@ const showProducts = (products) => {
   }
 };
 
+// add to card funtion 
 
 let count = 0;
 const addToCart = (id, price) => {
