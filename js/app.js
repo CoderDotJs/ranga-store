@@ -1,5 +1,5 @@
 const loadProducts = () => {
-  const url = `https://raw.githubusercontent.com/biswajitdasme/fakestore/main/db.json`;
+  const url = `https://raw.githubusercontent.com/ProgrammingHero1/ranga-store-api/main/ranga-api.json?fbclid=IwAR0w-S4ROqiHtdqT4AQ3ySA1y8lPfqV0mboFe6I20vjfDQTciXKVmc1Ad1k`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
