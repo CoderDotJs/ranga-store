@@ -25,8 +25,8 @@ const showProducts = (products) => {
       <div class="card-body w-100 d-flex flex-column justify-content-evenly align-items-start">
         <h1 class="fs-2 fw-bold">${product.title}</h1>
         <p>Category: ${product.category}</p>
-        <p>Rating: <b>${product.rating.rate} (${product.rating.count} reviews)</b></p>
-        <h6>Price:<span class="fs-3"> $ ${product.price}</span></h6>
+        <p class="text-secondary">Rating: <b><span class="text-success">${product.rating.rate}</span> (${product.rating.count} reviews)</b></p>
+        <h6>Price:<span class="fs-3 text-danger"> $ ${product.price}</span></h6>
         <div class="card-footer w-75 px-0 d-flex justify-content-between bg-transparent border-top-0">
         <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn border-0 btn-success rounded-1">Add to cart</button>
         <button id="details-btn" data-bs-toggle="modal" data-bs-target="#a${product.id}" class="btn btn-danger border-0 rounded-1">Details</button>
