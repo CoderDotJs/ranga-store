@@ -19,17 +19,17 @@ const showProducts = (products) => {
 
           <!--Card-->
 
-      <div class="card h-100 align-items-center py-3 shadow-lg">
+      <div class="card h-100 align-items-center pt-3 shadow-lg">
       <img class="product-image card-img-top " src=${image}></img>
       
-      <div class="card-body d-flex flex-column justify-content-evenly align-items-start">
-        <h1 class="fs-2">${product.title}</h1>
+      <div class="card-body w-100 d-flex flex-column justify-content-evenly align-items-start">
+        <h1 class="fs-2 fw-bold">${product.title}</h1>
         <p>Category: ${product.category}</p>
-        <p>Rating: ${product.rating.rate}(${product.rating.count})</p>
-        <h1 class="fs-5">Price: $ ${product.price}</h1>
-        <div>
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success rounded-0">Add to cart</button>
-        <button id="details-btn" data-bs-toggle="modal" data-bs-target="#a${product.id}" class="btn btn-danger rounded-0">Details</button>
+        <p>Rating: <b>${product.rating.rate} (${product.rating.count} reviews)</b></p>
+        <h6>Price:<span class="fs-3"> $ ${product.price}</span></h6>
+        <div class="card-footer w-75 px-0 d-flex justify-content-between bg-transparent border-top-0">
+        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn border-0 btn-success rounded-1">Add to cart</button>
+        <button id="details-btn" data-bs-toggle="modal" data-bs-target="#a${product.id}" class="btn btn-danger border-0 rounded-1">Details</button>
         </div>
       </div>
       </div>
@@ -48,7 +48,7 @@ const showProducts = (products) => {
           <p>${product.description}</p>
           <p>Category: ${product.category}</p>
           <p>Rating: ${product.rating.rate}(${product.rating.count})</p>
-          <h1 class="fs-5">Price: $ ${product.price}</h1>
+          <h4>Price: <span class="fs-2">$ ${product.price}</span></h4>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -100,7 +100,9 @@ a:link {
 p{
   color: black;
 }
-
+.btn-success{
+  background-color: #536bf6 !important;
+}
 
     /* Media for under 768px screen */
 
